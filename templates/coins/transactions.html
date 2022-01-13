@@ -1,28 +1,40 @@
 {% extends 'base.html' %} {% block content %}
+<div class="transactions">
+    <h2>New Transaction</h2>
+    <form method="post" action="/coins">
+        <ul class="wrapper">
+            <li class="form-row">
+                <label for="crypto">Crypto (by Symbol)</label>
+                <input id="name" name="name" type="text" required />
+            </li>
+            <li class="form-row buysell">
+                <label for="transactions">Transactions</label>
+                <input
+                    type="radio"
+                    id="buy"
+                    name="transaction"
+                    value="buy"
+                    checked
+                />Buy
+                <input
+                    type="radio"
+                    id="sell"
+                    name="transaction"
+                    value="sell"
+                />Sell
+            </li>
+            <li class="form-row">
+                <label for="value">Crypto Value</label>
+                <input id="value" name="value" type="number" required />
+            </li>
+            <li class="form-row">
+                <button type="submit">Submit</button>
+            </li>
+        </ul>
+    </form>
+</div>
 
-<form method="post" action="/coins">
-    <h2>Add Transaction</h2>
-    <div>
-        <label for="name">Crypto (by Symbol)</label>
-        <input id="name" name="name" type="text" />
-    </div>
-
-    <div>
-        <label for="transaction">Transaction</label>
-        <input type="radio" id="buy" name="transaction" value="Buy" />
-        <label for="buy">Buy</label><br />
-        <input type="radio" id="sell" name="transaction" value="Sell" />
-        <label for="sell">Sell</label><br />
-    </div>
-
-    <div>
-        <label for="value">Crypto Value</label>
-        <input id="value" name="value" type="text" />
-    </div>
-
-    <div>
-        <button type="submit">Add Transaction</button>
-    </div>
-</form>
-
+<div class="transactions">
+    <h2>Transaction History</h2>
+</div>
 {% endblock content %}

@@ -11,3 +11,13 @@ def coins():
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
     json = coins.json()
     return render_template('coins.html', coins=json)
+
+
+@coins_controller.route('/coins/transactions')
+def transactions():
+    return render_template('transactions.html')
+
+
+@coins_controller.route('/coins/wallet')
+def wallet():
+    return render_template('wallet.html')
