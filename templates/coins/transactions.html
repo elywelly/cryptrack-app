@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+
+<form method="post" action="/coins">
+    <h2>Add Transaction</h2>
+    <div>
+        <label for="name">Crypto (by Symbol)</label>
+        <input id="name" name="name" type="text" />
+    </div>
+
+    <div>
+        <label for="transaction">Transaction</label>
+        <input type="radio" id="buy" name="transaction" value="Buy" />
+        <label for="buy">Buy</label><br />
+        <input type="radio" id="sell" name="transaction" value="Sell" />
+        <label for="sell">Sell</label><br />
+    </div>
+
+    <div>
+        <label for="value">Crypto Value</label>
+        <input id="value" name="value" type="text" />
+    </div>
+
+    <div>
+        <button type="submit">Add Transaction</button>
+    </div>
+</form>
+
+{% endblock content %}

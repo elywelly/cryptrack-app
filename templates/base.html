@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CrypTrack</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jura:wght@300;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <div class="title">
+                <h1>CrypTrack</h1>
+                <h3>A wallet to CrypTrack of all your Crypto prices</h3>
+            </div>
+            <nav>
+                <div>
+                    <a href="/">Home</a>
+                </div>
+                <div>
+                    <a href="/coins#all-coins">Coins</a>
+                </div>
+                <div>
+                    <a href="/signup">Sign Up</a>
+                </div>
+                <div>
+                    <a href="/login">Login</a>
+                </div>
+            </nav>
+        </header>
+        <main>{%block content %}{% endblock content %}</main>
+        <footer>
+            <div>
+                <h4>&copy; 2022 CrypTack</h4>
+                <p>Coin Data from CoinGecko</p>
+            </div>
+        </footer>
+    </body>
+</html>
