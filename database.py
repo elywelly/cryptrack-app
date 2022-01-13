@@ -13,3 +13,12 @@ def sql_select(query, params):
     cur.close()
     conn.close()
     return results
+
+
+def sql_write(query, params):
+    conn = psycopg2.connect(DB_URL)
+    cur = conn.cursor()
+    cur.execute(query, params)
+    conn.commit()
+    cur.close()
+    conn.close()

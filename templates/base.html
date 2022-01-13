@@ -28,19 +28,31 @@
                 <div>
                     <a href="/coins#all-coins">Coins</a>
                 </div>
+                {% if session.get('user_id') %}
+                <div>
+                    <a href="/coins/wallet">Wallet</a>
+                </div>
+                <div>
+                    <a href="/coins/transactions">Transactions</a>
+                </div>
+                <div>
+                    <a href="/sessions/destroy">Logout</a>
+                </div>
+                {% else %}
                 <div>
                     <a href="/signup">Sign Up</a>
                 </div>
                 <div>
                     <a href="/login">Login</a>
                 </div>
-                <div>
-                    <a href="/coins/transactions">Transactions</a>
-                </div>
-                <div>
-                    <a href="/coins/wallet">Wallet</a>
-                </div>
+                {% endif %}
             </nav>
+            {% if session.get('user_id') %}
+            <div class="loggedin">
+                    <div>Logged in as <span style="color: #ffed66">{{session.get('user_name')}}</span></div>
+            </div>
+            </nav>
+            {% endif %}
         </header>
         <main>{%block content %}{% endblock content %}</main>
         <footer>
