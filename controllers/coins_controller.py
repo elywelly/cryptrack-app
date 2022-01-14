@@ -48,7 +48,8 @@ def coin_transaction():
     user_id = int(session.get('user_id'))
     coin = request.form.get("name")
     value = int(request.form.get("value"))
-    transaction = request.form.get("transaction")
+    transaction = request.form.get("transactions")
+    current_price = request.form.get("current_price")
 
     if transaction == "buy":
 
@@ -58,21 +59,20 @@ def coin_transaction():
         # if none, insert
         if coin_select == None:
 
-            # to insert current price. another API call?
-            history = f"Bought {value} {coin} at "
+            history = f"Bought {value} {coin} at {current_price}"
             insert_transaction(user_id, coin, value, history)
-            redirect("/coins/transactions")
+            return redirect("/coins/transactions")
 
         # if found, update value by adding to it
         else:
             # add new history
-            history = f"Bought {value} {coin} at "
+            history = f"Bought {value} {coin} at {current_price}"
             insert_history(history, user_id, coin)
 
             # update value in db
             new_value = coin_select[0] + value
             update_transaction(new_value, user_id, coin)
-            redirect("/coins/transactions")
+            return redirect("/coins/transactions")
 
     if transaction == "sell":
 
@@ -81,17 +81,17 @@ def coin_transaction():
 
         # error
         if coin_select == None:
-            render_template("transactions.html",
-                            message="You do not have this coin in your wallet")
+            return render_template("transactions.html",
+                                   message="You do not have this coin in your wallet")
 
         # if found, update value by adding to it
         else:
-            history = f"Sold {value} {coin} at "
+            history = f"Sold {value} {coin} at {current_price}"
             insert_history(history, user_id, coin)
 
             new_value = coin_select[0] - value
             update_transaction(new_value, user_id, coin)
-            redirect("/coins/transactions")
+            return redirect("/coins/transactions")
 
 
 @ coins_controller.route('/coins/wallet')

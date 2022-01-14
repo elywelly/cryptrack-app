@@ -29,7 +29,7 @@ def insert_transaction(user_id, coin, value, history):
 
 
 def insert_history(history, user_id, coin):
-    database.sql_write("INSERT into transactions history VALUES %s WHERE user_id = %s AND coin = %s;", [
+    database.sql_write("INSERT into transactions (history) VALUES (%s) WHERE user_id = %s AND coin = %s;", [
         history,
         user_id,
         coin])
