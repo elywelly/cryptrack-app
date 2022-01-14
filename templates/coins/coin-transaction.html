@@ -13,7 +13,10 @@
         </div>
     </div>
 
-    <form method="post" action="/coins/transactions/{coin['symbol']}">
+    <form method="post" action="/coins/transactions/{{ coin['symbol'] }}">
+        <li class="form-row crypto">
+            <input type="radio" id="name" name="name" value="{{ coin['symbol'] }}" checked required/>{{ coin['symbol'].upper() }}
+        </li>
         <li class="form-row buysell">
             <label for="transactions">Transactions</label>
             <input
@@ -26,7 +29,7 @@
             <input type="radio" id="sell" name="transaction" value="sell" />Sell
         </li>
         <li class="form-row">
-            <label for="value">Crypto Value</label>
+            <label for="value">Crypto Amount</label>
             <input id="value" name="value" type="number" required />
         </li>
         <li class="form-row">

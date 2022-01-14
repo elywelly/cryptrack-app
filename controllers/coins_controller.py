@@ -31,25 +31,23 @@ def find_coin():
     if not session.get('user_id'):
         return redirect('/login')
 
-    # check if coin exists
     coins = requests.get(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=250&page=1&sparkline=false')
     json = coins.json()
     coin_name = request.form.get("name")
-    for coin in json:
-        if coin_name.lower() != coin['symbol']:
-            return render_template('transactions.html', message="Coin not found or supported. Please ensure you are using the coin's symbol (e.g. BTC).")
-        else:
-            # only works for btc
+    for i in range(len(json)):
+        print(json[i]['symbol'])
+        if coin_name.lower() == json[i]['symbol']:
             # insert history here and return with link to wallet
-            return render_template('coin-transaction.html', coin=coin)
+            return render_template('coin-transaction.html', coin=json[i])
+    return render_template('transactions.html', message="Coin not found or supported. Please ensure you are using the coin's symbol (e.g. BTC).")
 
 
-@ coins_controller.route('/coins/transactions/<coin>', methods=["POST"])
-def coin_transaction(coin):
-    user_id = session.get('user_id')
-    coin = coin  # get coin selected
-    value = request.form.get("value")
+@ coins_controller.route('/coins/transactions/coin', methods=["POST"])
+def coin_transaction():
+    user_id = int(session.get('user_id'))
+    coin = request.form.get("name")
+    value = int(request.form.get("value"))
     transaction = request.form.get("transaction")
 
     if transaction == "buy":

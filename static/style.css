@@ -195,6 +195,12 @@ button {
     margin-right: auto;
 }
 
+.crypto {
+    width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #wallet-value {
     background-color: #ffed66;
     color: black;

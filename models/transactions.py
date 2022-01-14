@@ -3,7 +3,7 @@ import database
 
 def select_all_transaction(user_id):
     results = database.sql_select(
-        "SELECT value, created_at, history FROM users WHERE user_id = %s ORDER BY created_at", [user_id])
+        "SELECT value, created_at, history FROM transactions WHERE user_id = %s ORDER BY created_at", [user_id])
     if len(results) > 0:
         return results[0]
     else:
@@ -12,7 +12,7 @@ def select_all_transaction(user_id):
 
 def select_transaction(user_id, coin):
     results = database.sql_select(
-        "SELECT value, created_at, history FROM users WHERE user_id = %s AND coin = %s;", [user_id, coin])
+        "SELECT value, created_at, history FROM transactions WHERE user_id = %s AND coin = %s;", [user_id, coin])
     if len(results) > 0:
         return results[0]
     else:
