@@ -34,7 +34,7 @@ def login():
         return redirect('/')
     else:
         # if not, have user signup
-        return render_template('signup.html', message="User not found, Sign up now!")
+        return render_template('signup.html', message="Password or user not found. Sign up now!")
 
 
 @session_controller.route('/sessions/destroy', methods=["GET", "POST"])

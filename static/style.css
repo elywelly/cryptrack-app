@@ -204,3 +204,14 @@ button {
     text-align: center;
     font-size: 1.5em;
 }
+
+.message {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 45, 45);
+}
+
+.transactions > .coin-description {
+    display: flex;
+    justify-content: center;
+}
