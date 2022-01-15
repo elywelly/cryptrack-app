@@ -6,6 +6,11 @@ user_controller = Blueprint(
     "user_controller", __name__, template_folder="../templates/users")
 
 
+@user_controller.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @user_controller.route('/signup')
 def signup():
     return render_template('signup.html')
