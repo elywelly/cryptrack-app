@@ -1,6 +1,7 @@
 # CrypTrack App
 
-Create your own wallet to CrypTrack of all your Crypto Prices in one spot. (Amounts are all in AUD)
+Got too many crypto and exchanges to keep track of?
+Create your own wallet to CrypTrack of all your Crypto values in one spot.
 
 Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 
@@ -10,9 +11,9 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 
 -   API for Crypto data (CoinGecko)
 -   Database for user logins and passwords
--   Database to hold user wallet values
+-   Database to hold user wallet values for each crypto
 -   Homepage with Top 100 data
--   Wallet page for users to view
+-   Wallet page for users to view (Total amount in Fiat and individual Crypto)
 -   Transaction page to create new Transactions
 
 ## Layout Plans
