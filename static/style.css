@@ -217,7 +217,18 @@ button {
     color: rgb(255, 45, 45);
 }
 
+.success {
+    display: flex;
+    justify-content: center;
+    color: rgb(58, 232, 58);
+}
+
 .transactions > .coin-description {
+    display: flex;
+    justify-content: center;
+}
+
+.history {
     display: flex;
     justify-content: center;
 }

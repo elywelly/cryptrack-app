@@ -2,6 +2,7 @@
 <div class="transactions">
     <h2>New Transaction</h2>
     <p class="message">{{ message }}</p>
+    <p class="success">{{ success }}</p>
     <form method="post" action="/coins/transactions">
         <ul class="wrapper">
             <li class="form-row">
@@ -16,5 +17,9 @@
 </div>
 <div class="transactions">
     <h2>Transaction History</h2>
+    {% for each_history in history %}
+    <p class="history" style="color: grey"><b>{{ each_history[0] }}</b></p>
+    <p class="history">{{ each_history[1] }}</p>
+    {% endfor %}
 </div>
 {% endblock content %}
