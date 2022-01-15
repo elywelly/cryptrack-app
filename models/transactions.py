@@ -45,3 +45,7 @@ def select_history(user_id):
         return results
     else:
         return []
+
+
+def delete_history(id):
+    database.sql_write("DELETE FROM history WHERE id = %s", [id])

@@ -6,11 +6,39 @@ coins_controller = Blueprint(
     "coins_controller", __name__, template_folder="../templates/coins")
 
 
-@coins_controller.route('/coins')
+@coins_controller.route('/coins', methods=['GET'])
 def coins():
+
+    sort = request.values.get('sort')
+    # if sort == None:
+    sort_type = "market_cap_"
+    sort_by = "desc"
+    if sort != None:
+        if sort == "MCASC":
+            sort_type = "market_cap_"
+            sort_by = "asc"
+        elif sort == "MCDESC":
+            sort_type = "market_cap_"
+            sort_by = "desc"
+        elif sort == "PASC":
+            sort_type = "price_"
+            sort_by = "asc"
+        elif sort == "PADESC":
+            sort_type = "price_"
+            sort_by = "desc"
+
+    currency = request.values.get('currency')
+    if currency == None:
+        currency = "aud"
+    else:
+        currency = request.values.get('currency')
+
     coins = requests.get(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
+        f'https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order={sort_type}{sort_by}&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
+    # coins = requests.get(
+    #     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
     json = coins.json()
+
     return render_template('coins.html', coins=json)
 
 
