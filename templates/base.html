@@ -49,7 +49,7 @@
             </nav>
             {% if session.get('user_id') %}
             <div class="loggedin">
-                    <div>Logged in as <span style="color: #ffed66">{{session.get('user_name')}}</span></div>
+                    <div>Logged in as <span style="color: #ffed66; font-weight: bold">{{session.get('user_name')}}</span></div>
             </div>
             </nav>
             {% endif %}

@@ -44,4 +44,4 @@ def select_history(user_id):
     if len(results) > 0:
         return results
     else:
-        return "No History Found"
+        return []

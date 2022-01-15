@@ -72,7 +72,7 @@ def coin_transaction():
             history = f"Bought {value} {coin} at {current_price}"
             insert_history(user_id, history)
             insert_transaction(user_id, coin, value)
-            return render_template("transactions.html", success="Transaction successfully added", history=all_history)
+            return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
 
         # if found, update value by adding to it
         else:
@@ -84,7 +84,7 @@ def coin_transaction():
             new_value = 0
             new_value = float(coin_select[0]) + value
             update_transaction(new_value, user_id, coin)
-            return render_template("transactions.html", success="Transaction successfully added", history=all_history)
+            return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
 
     if transaction == "sell":
 
@@ -108,7 +108,7 @@ def coin_transaction():
                 history = f"Sold {value} {coin} at {current_price}"
                 insert_history(user_id, history)
                 update_transaction(new_value, user_id, coin)
-                return render_template("transactions.html", success="Transaction successfully added", history=all_history)
+                return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
 
 
 @ coins_controller.route('/coins/wallet')
