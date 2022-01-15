@@ -15,9 +15,12 @@
                 <h3>Symbol</h3>
             </div>
             <div class="desc-price title">
-                <h3>Cryto Amount</h3>
+                <h3>Current Price</h3>
             </div>
             <div class="desc-hour title">
+                <h3>Cryto Amount</h3>
+            </div>
+            <div class="desc-day title">
                 <h3>Fiat Amount</h3>
             </div>
         </div>
@@ -32,9 +35,12 @@
                 <p>{{ coins[1].upper() }}</p>
             </div>
             <div class="desc-price">
-                <p>${{ coins[0] }}</p>
+                <p>${{ options['current_price'] }}</p>
             </div>
             <div class="desc-hour">
+                <p>${{ coins[0] }}</p>
+            </div>
+            <div class="desc-day">
                 <p>${{ options['current_price']|float * coins[0]|float }}</p>
             </div>
         </div>
