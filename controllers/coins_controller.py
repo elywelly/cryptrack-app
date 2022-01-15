@@ -10,7 +10,6 @@ coins_controller = Blueprint(
 def coins():
 
     sort = request.values.get('sort')
-    # if sort == None:
     sort_type = "market_cap_"
     sort_by = "desc"
     if sort != None:
@@ -35,8 +34,7 @@ def coins():
 
     coins = requests.get(
         f'https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order={sort_type}{sort_by}&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
-    # coins = requests.get(
-    #     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
+
     json = coins.json()
 
     return render_template('coins.html', coins=json)

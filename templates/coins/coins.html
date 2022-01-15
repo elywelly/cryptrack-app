@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-    <h2>TOP 100 COINS</h2>
+    <h2>100 COINS</h2>
 </div>
 <div id="sort">
     <form action="/coins" method="Get">
@@ -59,53 +59,56 @@
             <p>${{ coin['current_price'] }}</p>
         </div>
         <div class="desc-hour">
-            {% if coin["price_change_percentage_1h_in_currency"] <0 %}
+            {% if coin["price_change_percentage_1h_in_currency"] != None and
+            coin["price_change_percentage_1h_in_currency"] < 0 %}
             <p style="color: rgb(255, 45, 45)">
-                {% if coin["price_change_percentage_1h_in_currency"] != None %}
                 {{ coin["price_change_percentage_1h_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_1h_in_currency"] >= 0 %}
+            {% elif coin["price_change_percentage_1h_in_currency"] != None and
+            coin["price_change_percentage_1h_in_currency"] > 0 %}
+
             <p style="color: rgb(72, 230, 72)">
-                {% if coin["price_change_percentage_1h_in_currency"] != None %}
                 {{ coin["price_change_percentage_1h_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_1h_in_currency"] == None %}
+            {% else %}
             <p>NA</p>
             {% endif %}
         </div>
         <div class="desc-day">
-            {% if coin["price_change_percentage_24h_in_currency"] <0 %}
+            {% if coin["price_change_percentage_24h_in_currency"] != None and
+            coin["price_change_percentage_24h_in_currency"] < 0 %}
             <p style="color: rgb(255, 45, 45)">
-                {% if coin["price_change_percentage_24h_in_currency"] != None %}
                 {{ coin["price_change_percentage_24h_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_24h_in_currency"] >= 0 %}
+            {% elif coin["price_change_percentage_24h_in_currency"] != None and
+            coin["price_change_percentage_24h_in_currency"] > 0 %}
+
             <p style="color: rgb(72, 230, 72)">
-                {% if coin["price_change_percentage_24h_in_currency"] != None %}
                 {{ coin["price_change_percentage_24h_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_24h_in_currency"] == None %}
+            {% else %}
             <p>NA</p>
             {% endif %}
         </div>
         <div class="desc-week">
-            {% if coin["price_change_percentage_7d_in_currency"] <0 %}
+            {% if coin["price_change_percentage_7d_in_currency"] != None and
+            coin["price_change_percentage_7d_in_currency"] < 0 %}
             <p style="color: rgb(255, 45, 45)">
-                {% if coin["price_change_percentage_7d_in_currency"] != None %}
                 {{ coin["price_change_percentage_7d_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_7d_in_currency"] >= 0 %}
+            {% elif coin["price_change_percentage_7d_in_currency"] != None and
+            coin["price_change_percentage_7d_in_currency"] > 0 %}
+
             <p style="color: rgb(72, 230, 72)">
-                {% if coin["price_change_percentage_24h_in_currency"] != None %}
-                {{ coin["price_change_percentage_24h_in_currency"]|round(2,
-                'floor') }}% {% else %} NA {% endif %}
+                {{ coin["price_change_percentage_7d_in_currency"]|round(2,
+                'floor') }}%
             </p>
-            {% elif coin["price_change_percentage_7d_in_currency"] == None %}
+            {% else %}
             <p>NA</p>
             {% endif %}
         </div>
