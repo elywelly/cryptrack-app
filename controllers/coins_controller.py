@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, redirect, render_template
 import requests
-from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_all_transaction, select_history
+from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction
 
 coins_controller = Blueprint(
     "coins_controller", __name__, template_folder="../templates/coins")
@@ -20,7 +20,6 @@ def transactions():
         return redirect('/login')
 
     user_id = session.get('user_id')
-    select_all_transaction(user_id)
 
     all_history = select_history(user_id)
     return render_template('transactions.html', history=all_history)
@@ -35,10 +34,12 @@ def find_coin():
     user_id = session.get('user_id')
     all_history = select_history(user_id)
 
+    # check coins
     coins = requests.get(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=250&page=1&sparkline=false')
     json = coins.json()
     coin_name = request.form.get("name")
+
     for i in range(len(json)):
         if coin_name.lower() == json[i]['symbol']:
             # insert history here and return with link to wallet
@@ -115,4 +116,23 @@ def coin_transaction():
 def wallet():
     if not session.get('user_id'):
         return redirect('/login')
-    return render_template('wallet.html')
+
+    user_id = session.get('user_id')
+    coins_held = select_all_transaction(user_id)
+
+    # User total wallet value in fiat
+    amount = 0
+
+    # to check each crypto price in fiat
+    coins = requests.get(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=250&page=1&sparkline=false')
+    json = coins.json()
+
+    for coin in json:
+        for each_coin in coins_held:
+            if each_coin[1] == coin["symbol"]:
+                # fiat value for each coin
+                coin_fiat = float(each_coin[0]) * float(coin["current_price"])
+                amount += coin_fiat
+
+    return render_template('wallet.html', amount=amount, coins_held=coins_held, list=json)

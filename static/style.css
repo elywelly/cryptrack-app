@@ -232,3 +232,8 @@ button {
     display: flex;
     justify-content: center;
 }
+
+#coins-held {
+    width: 30em;
+    margin: 0 auto;
+}

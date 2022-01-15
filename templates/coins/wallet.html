@@ -2,8 +2,43 @@
 <section class="wallet">
     <h2>TOTAL WALLET VALUE</h2>
     <div id="wallet-value">
-        <h3>$ {{ amount }}</h3>
+        <h3>$ {{ '{:.2f}'.format(amount) }}</h3>
     </div>
-    <!-- database of user held coins here -->
 </section>
+<div id="coins-held">
+    <section class="all-coins" id="all-coins">
+        <div class="coin-description">
+            <div class="desc-name title">
+                <h3>Coin</h3>
+            </div>
+            <div class="desc-symbol title">
+                <h3>Symbol</h3>
+            </div>
+            <div class="desc-price title">
+                <h3>Cryto Amount</h3>
+            </div>
+            <div class="desc-hour title">
+                <h3>Fiat Amount</h3>
+            </div>
+        </div>
+        {% for coins in coins_held %}
+        <div class="coin-description">
+            {% for options in list %} {% if coins[1] == options["symbol"] +%}
+            <div class="desc-name">
+                <p>{{ options['name'] }}</p>
+                <img src="{{ options['image'] }}" />
+            </div>
+            <div class="desc-symbol">
+                <p>{{ coins[1].upper() }}</p>
+            </div>
+            <div class="desc-price">
+                <p>${{ coins[0] }}</p>
+            </div>
+            <div class="desc-hour">
+                <p>${{ options['current_price']|float * coins[0]|float }}</p>
+            </div>
+        </div>
+        {% endif %} {% endfor %} {% endfor %}
+    </section>
+</div>
 {% endblock content %}

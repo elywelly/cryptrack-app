@@ -3,11 +3,11 @@ import database
 
 def select_all_transaction(user_id):
     results = database.sql_select(
-        "SELECT value FROM transactions WHERE user_id = %s", [user_id])
+        "SELECT value, coin FROM transactions WHERE user_id = %s", [user_id])
     if len(results) > 0:
-        return results[0]
+        return results
     else:
-        return None
+        return []
 
 
 def select_transaction(user_id, coin):

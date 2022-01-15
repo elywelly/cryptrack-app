@@ -9,6 +9,16 @@ CREATE TABLE transactions (
     user_id INTEGER,
     coin TEXT,
     value NUMERIC,
+    CONSTRAINT fk_user
+      FOREIGN KEY(user_id)
+	  REFERENCES users(id)
+);
+
+-- History
+
+CREATE TABLE history (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER,
     history VARCHAR(255),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user
