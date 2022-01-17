@@ -238,6 +238,11 @@ button {
     margin: 0 auto;
 }
 
+#search-section {
+    display: flex;
+    justify-content: center;
+}
+
 #search {
     background-color: #f5f5f5;
     color: rgb(13, 3, 46);
@@ -250,7 +255,8 @@ button {
     border-radius: 25px;
 }
 
-#sort > form > #submit {
+#sort > form > #submit,
+.search-button {
     background-color: #f5f5f5;
     color: rgb(13, 3, 46);
     width: 3em;

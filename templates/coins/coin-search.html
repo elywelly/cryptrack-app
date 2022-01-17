@@ -1,0 +1,107 @@
+{% extends 'base.html' %} {% block content %}
+<div class="transactions">
+    <h2>Search results for {{ coin_search }}</h2>
+    {% if coin_search.lower() == coin['symbol'] or coin_search.lower() ==
+    coin['id'] %}
+    <section class="all-coins" id="all-coins">
+        <div class="coin-description">
+            <div class="desc-name title">
+                <h3>Coin</h3>
+            </div>
+            <div class="desc-symbol title">
+                <h3>Symbol</h3>
+            </div>
+            <div class="desc-price title">
+                <h3>Current Price ({{ current_currency }})</h3>
+            </div>
+            <div class="desc-hour title">
+                <h3>1h</h3>
+            </div>
+            <div class="desc-day title">
+                <h3>24h</h3>
+            </div>
+            <div class="desc-week title">
+                <h3>7d</h3>
+            </div>
+            <div class="desc-cap title">
+                <h3>Market Cap</h3>
+            </div>
+        </div>
+        <div class="coin-description">
+            <div class="desc-name">
+                <p>{{ coin['name'] }}</p>
+                <img src="{{ coin['image'] }}" />
+            </div>
+            <div class="desc-symbol">
+                <p>{{ coin['symbol'].upper() }}</p>
+            </div>
+            <div class="desc-price">
+                <p>${{ coin['current_price'] }}</p>
+            </div>
+            <div class="desc-hour">
+                {% if coin["price_change_percentage_1h_in_currency"] != None and
+                coin["price_change_percentage_1h_in_currency"] < 0 %}
+                <p style="color: rgb(255, 45, 45)">
+                    {{ coin["price_change_percentage_1h_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% elif coin["price_change_percentage_1h_in_currency"] != None
+                and coin["price_change_percentage_1h_in_currency"] > 0 %}
+
+                <p style="color: rgb(72, 230, 72)">
+                    {{ coin["price_change_percentage_1h_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% else %}
+                <p>NA</p>
+                {% endif %}
+            </div>
+            <div class="desc-day">
+                {% if coin["price_change_percentage_24h_in_currency"] != None
+                and coin["price_change_percentage_24h_in_currency"] < 0 %}
+                <p style="color: rgb(255, 45, 45)">
+                    {{ coin["price_change_percentage_24h_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% elif coin["price_change_percentage_24h_in_currency"] != None
+                and coin["price_change_percentage_24h_in_currency"] > 0 %}
+
+                <p style="color: rgb(72, 230, 72)">
+                    {{ coin["price_change_percentage_24h_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% else %}
+                <p>NA</p>
+                {% endif %}
+            </div>
+            <div class="desc-week">
+                {% if coin["price_change_percentage_7d_in_currency"] != None and
+                coin["price_change_percentage_7d_in_currency"] < 0 %}
+                <p style="color: rgb(255, 45, 45)">
+                    {{ coin["price_change_percentage_7d_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% elif coin["price_change_percentage_7d_in_currency"] != None
+                and coin["price_change_percentage_7d_in_currency"] > 0 %}
+
+                <p style="color: rgb(72, 230, 72)">
+                    {{ coin["price_change_percentage_7d_in_currency"]|round(2,
+                    'floor') }}%
+                </p>
+                {% else %}
+                <p>NA</p>
+                {% endif %}
+            </div>
+            <div class="desc-cap">
+                <p>${{ coin["market_cap"] }}</p>
+            </div>
+        </div>
+        <p>{{ no_results }}</p>
+    </section>
+    {% else %}
+    <p style="text-align: center">
+        Coin not found or supported. Please ensure you are using the coin's
+        symbol or name.
+    </p>
+    {% endif %} {% endblock content %}
+</div>

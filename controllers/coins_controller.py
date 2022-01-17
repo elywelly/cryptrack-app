@@ -12,32 +12,68 @@ def coins():
     sort = request.values.get('sort')
     sort_type = "market_cap_"
     sort_by = "desc"
+    message = "TOP"
     if sort != None:
         if sort == "MCASC":
             sort_type = "market_cap_"
             sort_by = "asc"
+            message = "BOTTOM"
         elif sort == "MCDESC":
             sort_type = "market_cap_"
             sort_by = "desc"
+            message = "TOP"
         elif sort == "PASC":
             sort_type = "price_"
             sort_by = "asc"
+            message = "BOTTOM"
         elif sort == "PADESC":
             sort_type = "price_"
             sort_by = "desc"
+            message = "TOP"
 
     currency = request.values.get('currency')
+    current_currency = "AUD"
     if currency == None:
         currency = "aud"
+        current_currency = currency.upper()
     else:
         currency = request.values.get('currency')
+        current_currency = currency.upper()
 
     coins = requests.get(
         f'https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order={sort_type}{sort_by}&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
 
     json = coins.json()
 
-    return render_template('coins.html', coins=json)
+    return render_template('coins.html', coins=json, message=message, current_currency=current_currency)
+
+
+@coins_controller.route('/coins/search', methods=['GET', 'POST'])
+def search():
+
+    currency = request.values.get('currency')
+    current_currency = "AUD"
+    if currency == None:
+        currency = "aud"
+        current_currency = currency.upper()
+    else:
+        currency = request.values.get('currency')
+        current_currency = currency.upper()
+
+    # check coins
+    coins = requests.get(
+        f'https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order=asc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
+    json = coins.json()
+    coin_search = request.form.get("search")
+
+    if coin_search == None:
+        return redirect('/')
+
+    for i in range(len(json)):
+        if coin_search.lower() == json[i]['symbol'] or coin_search.lower() == json[i]['id']:
+            return render_template('coin-search.html', coin=json[i], current_currency=current_currency, coin_search=coin_search)
+
+    return render_template('coin-search.html', coin=json[i], coin_search=coin_search, current_currency=current_currency, no_results="Coin not found or supported. Please ensure you are using the coin's symbol or name.")
 
 
 @coins_controller.route('/coins/transactions')

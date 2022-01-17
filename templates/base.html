@@ -50,6 +50,21 @@
                 </div>
                 {% endif %}
             </nav>
+            <div id="search-section">
+                <form action="/coins/search" method="POST">
+                    <label for="search" style="font-weight: bold">Coin Search (name): </label>
+                    <input type="text" id="search" name="search" required/>
+                    <label for="currency">Currency:</label>
+                    <select id="currency" name="currency">
+                        <option value="aud" selected>AUD</option>
+                        <option value="usd">USD</option>
+                        <option value="nzd">NZD</option>
+                        <option value="cad">CAD</option>
+                        <option value="sgd">SGD</option>
+                    </select>
+                    <input type="submit" id="submit" class="search-button" value="Go" />
+                </form>
+            </div>
             {% if session.get('user_id') %}
             <div class="loggedin">
                     <div>Logged in as <span style="color: #ffed66; font-weight: bold">{{session.get('user_name')}}</span></div>

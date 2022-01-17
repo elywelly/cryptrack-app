@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-    <h2>100 COINS</h2>
+    <h2>{{ message }} 100 COINS</h2>
 </div>
 <div id="sort">
     <form action="/coins" method="Get">
@@ -21,11 +21,6 @@
         </select>
         <input type="submit" id="submit" value="Go" />
     </form>
-    <form action="/coins" method="Get">
-        <label for="search">Coin Search (name): </label>
-        <input type="text" id="search" name="search" />
-        <input type="submit" id="submit" value="Go" />
-    </form>
 </div>
 <section class="all-coins" id="all-coins">
     <div class="coin-description">
@@ -36,7 +31,7 @@
             <h3>Symbol</h3>
         </div>
         <div class="desc-price title">
-            <h3>Current Price</h3>
+            <h3>Current Price ({{ current_currency }})</h3>
         </div>
         <div class="desc-hour title">
             <h3>1h</h3>
