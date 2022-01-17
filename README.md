@@ -50,6 +50,14 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 -   Insert history message to history database for each transaction to display in transaction history
 -   Wallet will be updated based on sum of all crypto
 
+## Further Developments
+
+-   Added About page
+-   Added currency options (to coins and wallet - in progress)
+-   Ability to sort by Market Price or Current Price for coins
+-   Add search function for coin by crypto name or symbol
+-   Ability for user to delete their transaction history (in progress)
+
 ## Credits
 
 Coin API data from [CoinGecko](https://www.coingecko.com/en/api/documentation)
