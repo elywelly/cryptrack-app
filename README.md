@@ -29,6 +29,9 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 #### Changes Made
 
 -   Created an additional database for history, linked to user id to capture user's transaction history
+-   Added a search bar to page under navigation
+-   Request user to select coin first before starting transaction with information on coin selected
+-   No individual coin data page yet with more info
 
 ![Flow with database](https://github.com/elywelly/cryptrack-app/blob/main/static/Flowchart.png?raw=true)
 ![Pages needed](https://github.com/elywelly/cryptrack-app/blob/main/static/pages.png?raw=true)
