@@ -103,11 +103,11 @@ def find_coin():
     coin_name = request.form.get("name")
 
     for i in range(len(json)):
-        if coin_name.lower() == json[i]['symbol']:
+        if coin_name.lower() == json[i]['symbol'] or coin_name.lower() == json[i]['id']:
             # insert history here and return with link to wallet
             return render_template('coin-transaction.html', coin=json[i], history=all_history)
 
-    return render_template('transactions.html', history=all_history, message="Coin not found or supported. Please ensure you are using the coin's symbol (e.g. BTC).")
+    return render_template('transactions.html', history=all_history, message="Coin not found or supported. Please ensure you are using the coin's name (e.g. Bitcoin) or symbol (e.g. BTC).")
 
 
 @ coins_controller.route('/coins/transactions/history', methods=["GET", "POST"])

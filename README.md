@@ -49,7 +49,7 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
     -   API call for current price to calculate updated amount of each crypto (from transactions database)
     -   Update total wallet value in Fiat from crypto held (from transactions database)
 -   Transactions to allow user to add a new transaction
--   New transaction starts by checking if the crypto symbol matches/is supported with Fiat currency (through API call)
+-   New transaction starts by checking if the crypto symbol or name matches/is supported with Fiat currency (through API call)
 -   If supported, user will be able to choose between "buy" or "sell" to add to their wallet and the amount
 -   Transactions batabase to update based on user's ID and the value of particular crypto held
 -   Insert history message to history database for each transaction to display in transaction history
