@@ -13,3 +13,8 @@ def get_user_by_email(email):
         return results[0]
     else:
         return None
+
+
+def delete_user(user_id):
+    database.sql_write(
+        "DELETE FROM users WHERE id = %s", [user_id])

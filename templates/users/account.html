@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="signup account">
+    <form action="/users/account/delete" method="POST">
+        <h2>My Account</h2>
+        <p>Delete your account.</p>
+        <div class="delete">
+            <input
+                    type="submit"
+                    id="delete-account"
+                    name="delete"
+                    value="Delete Account"
+                    class="button"
+                />
+            </form>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -38,7 +38,7 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 
 ## Functions Breakdown
 
--   Users are able to view Top 100 Crypto Data from the homepage
+-   Users are able to view 100 Crypto Data from the homepage
     -   API data display
 -   User to sign up or login (if password matches users database)
     -   To match database (password to be encrypted)
