@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-    <h2>{{ message }} 100 COINS</h2>
+    <h2 id="all-coins">{{ message }} 100 COINS</h2>
 </div>
 <div id="sort">
     <form action="/coins" method="Get">
@@ -22,7 +22,7 @@
         <input type="submit" id="submit" value="Go" />
     </form>
 </div>
-<section class="all-coins" id="all-coins">
+<section class="all-coins">
     <div class="coin-description">
         <div class="desc-name title">
             <h3>Coin</h3>
