@@ -34,7 +34,7 @@
         </li>
         <li class="form-row">
             <label for="value">Amount in Cryptocurrency</label>
-            <input id="value" name="value" type="text" required />
+            <input id="cryptovalue" name="value" type="number" step="0.00000000001" required />
         </li>
         <li class="form-row">
             <button type="submit">Submit</button>
@@ -47,7 +47,7 @@
     <h2>Transaction History</h2>
     <div class="delete">
         <form action="/coins/transactions/history" method="post">
-            <input type="submit" id="delete" name="delete" value="Delete History" class="button" />
+            <input type="submit" id="history-delete" name="delete" value="Delete History" class="button" />
         </form>
     </div>
     {% for each_history in history %}

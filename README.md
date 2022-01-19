@@ -8,10 +8,12 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 ## Tech Used
 
 -   HTML/CSS
+-   JavaScript
 -   Python
 -   Flask
 -   Jinja
 -   PostgreSQL
+-   Heroku
 
 ## Planning
 
@@ -64,6 +66,7 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 -   User to be able to empty wallet (delete data from transactions DB)
 -   Transactions Database to delete coins that have 0 value so it doesn't appear in wallet
 -   Users to be able to delete account
+-   JavaScript to warn user about deleting forever functions (history, account, wallet)
 
 ## Credits
 
