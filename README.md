@@ -63,6 +63,7 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 -   Ability for user to delete their transaction history (delete data from transactions DB)
 -   User to be able to empty wallet (delete data from transactions DB)
 -   Transactions Database to delete coins that have 0 value so it doesn't appear in wallet
+-   Users to be able to delete account
 
 ## Credits
 
