@@ -30,6 +30,8 @@ def insert_transaction(user_id, coin, value):
 def update_transaction(value, user_id, coin):
     database.sql_write("UPDATE transactions SET value = %s WHERE user_id = %s AND coin = %s;", [
                        value, user_id, coin])
+    database.sql_write("DELETE FROM transactions WHERE value = 0 AND user_id = %s;", [
+                       user_id])
 
 
 def insert_history(user_id, history):
