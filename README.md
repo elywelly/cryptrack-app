@@ -26,7 +26,7 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 
 ### Layout Plans
 
-#### Changes Made
+#### Changes Made to initial ideas (as in images)
 
 -   Created an additional database for history, linked to user id to capture user's transaction history
 -   Added a search bar to page under navigation
