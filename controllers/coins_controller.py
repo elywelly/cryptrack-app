@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, redirect, render_template
 import requests
-from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction, delete_history
+from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction, delete_history, delete_wallet
 
 coins_controller = Blueprint(
     "coins_controller", __name__, template_folder="../templates/coins")
@@ -202,10 +202,30 @@ def coin_transaction():
     return redirect('/')
 
 
+@ coins_controller.route('/coins/wallet/empty', methods=["GET", "POST"])
+def empty_wallet():
+
+    empty = request.form.get("delete")
+
+    if empty == None:
+        return redirect('/coins/wallet')
+
+    if empty == 'Empty Wallet':
+        user_id = int(session.get('user_id'))
+        delete_wallet(user_id)
+        return redirect('/coins/wallet')
+
+    return redirect('/')
+
+
 @ coins_controller.route('/coins/wallet', methods=['GET'])
 def wallet():
     if not session.get('user_id'):
         return redirect('/login')
+
+    empty = request.form.get("delete")
+    if empty == None:
+        pass
 
     currency = request.values.get('currency')
     current_currency = "AUD"

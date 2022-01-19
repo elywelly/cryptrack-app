@@ -51,3 +51,8 @@ def select_history(user_id):
 
 def delete_history(user_id):
     database.sql_write("DELETE FROM history WHERE user_id = %s", [user_id])
+
+
+def delete_wallet(user_id):
+    database.sql_write(
+        "DELETE FROM transactions WHERE user_id = %s", [user_id])

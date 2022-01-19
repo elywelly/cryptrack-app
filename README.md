@@ -60,7 +60,8 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 -   Added currency options (to coins and wallet)
 -   Ability to sort by Market Price or Current Price for coins
 -   Add search function for coin by crypto name or symbol
--   Ability for user to delete their transaction history
+-   Ability for user to delete their transaction history (delete data from transactions DB)
+-   User to be able to empty wallet (delete data from transactions DB)
 -   Transactions Database to delete coins that have 0 value so it doesn't appear in wallet
 
 ## Credits
