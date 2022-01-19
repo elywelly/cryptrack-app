@@ -56,10 +56,11 @@ Vist it [here](https://floating-thicket-31159.herokuapp.com/)
 ## Further Developments
 
 -   Added About page
--   Added currency options (to coins and wallet - in progress)
+-   Added currency options (to coins and wallet)
 -   Ability to sort by Market Price or Current Price for coins
 -   Add search function for coin by crypto name or symbol
 -   Ability for user to delete their transaction history (in progress)
+-   Transactions Database to delete coins that have 0 value (in progress)
 
 ## Credits
 

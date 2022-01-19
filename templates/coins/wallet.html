@@ -2,7 +2,20 @@
 <section class="wallet">
     <h2>TOTAL WALLET VALUE</h2>
     <div id="wallet-value">
-        <h3>$ {{ '{:.2f}'.format(amount) }}</h3>
+        <h3>$ {{ '{:.2f}'.format(amount) }} {{ current_currency }}</h3>
+    </div>
+    <div id="search-section">
+        <form action="/coins/wallet" method="get">
+            <label for="currency">Currency:</label>
+            <select id="currency" name="currency">
+                <option value="aud" selected>AUD</option>
+                <option value="usd">USD</option>
+                <option value="nzd">NZD</option>
+                <option value="cad">CAD</option>
+                <option value="sgd">SGD</option>
+            </select>
+            <input type="submit" id="submit" class="search-button" value="Go" />
+        </form>
     </div>
 </section>
 <div id="coins-held">
@@ -15,7 +28,7 @@
                 <h3>Symbol</h3>
             </div>
             <div class="desc-price title">
-                <h3>Current Price</h3>
+                <h3>Current Price ({{ current_currency }})</h3>
             </div>
             <div class="desc-hour title">
                 <h3>Cryto Amount</h3>
@@ -41,7 +54,10 @@
                 <p>{{ coins[0] }}</p>
             </div>
             <div class="desc-day">
-                <p>${{ options['current_price']|float * coins[0]|float }}</p>
+                <p>
+                    ${{ '{:.2f}'.format(options['current_price']|float *
+                    coins[0]|float) }}
+                </p>
             </div>
         </div>
         {% endif %} {% endfor %} {% endfor %}

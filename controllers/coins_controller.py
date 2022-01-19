@@ -174,10 +174,19 @@ def coin_transaction():
                 return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
 
 
-@ coins_controller.route('/coins/wallet')
+@ coins_controller.route('/coins/wallet', methods=['GET'])
 def wallet():
     if not session.get('user_id'):
         return redirect('/login')
+
+    currency = request.values.get('currency')
+    current_currency = "AUD"
+    if currency == None:
+        currency = "aud"
+        current_currency = currency.upper()
+    else:
+        currency = request.values.get('currency')
+        current_currency = currency.upper()
 
     user_id = session.get('user_id')
     coins_held = select_all_transaction(user_id)
@@ -187,7 +196,7 @@ def wallet():
 
     # to check each crypto price in fiat
     coins = requests.get(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=250&page=1&sparkline=false')
+        f'https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order=market_cap_desc&per_page=250&page=1&sparkline=false')
     json = coins.json()
 
     for coin in json:
@@ -197,4 +206,4 @@ def wallet():
                 coin_fiat = float(each_coin[0]) * float(coin["current_price"])
                 amount += coin_fiat
 
-    return render_template('wallet.html', amount=amount, coins_held=coins_held, list=json)
+    return render_template('wallet.html', amount=amount, coins_held=coins_held, list=json, current_currency=current_currency)
