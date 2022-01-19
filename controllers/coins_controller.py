@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, redirect, render_template
 import requests
-from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction
+from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction, delete_history
 
 coins_controller = Blueprint(
     "coins_controller", __name__, template_folder="../templates/coins")
@@ -110,15 +110,41 @@ def find_coin():
     return render_template('transactions.html', history=all_history, message="Coin not found or supported. Please ensure you are using the coin's symbol (e.g. BTC).")
 
 
-@ coins_controller.route('/coins/transactions/coin', methods=["POST"])
+@ coins_controller.route('/coins/transactions/history', methods=["GET", "POST"])
+def delete_transactions():
+
+    delete = request.form.get("delete")
+
+    if delete == None:
+        return redirect('/coins')
+
+    if delete == 'Delete History':
+        user_id = int(session.get('user_id'))
+        delete_history(user_id)
+        return redirect('/coins/transactions')
+
+    return redirect('/')
+
+
+@ coins_controller.route('/coins/transactions/coin', methods=["GET", "POST"])
 def coin_transaction():
     if not session.get('user_id'):
         return redirect('/login')
+
+    delete = request.form.get("delete")
+    if delete == None:
+        pass
+
     user_id = int(session.get('user_id'))
     coin = request.form.get("name")
-    value = float(request.form.get("value"))
+    value = request.form.get("value")
     transaction = request.form.get("transactions")
     current_price = request.form.get("current_price")
+
+    if value == None:
+        return redirect('/coins/transactions')
+
+    value = float(value)
 
     # history
     user_id = session.get('user_id')
@@ -135,7 +161,7 @@ def coin_transaction():
             history = f"Bought {value} {coin} at {current_price}"
             insert_history(user_id, history)
             insert_transaction(user_id, coin, value)
-            return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
+            return redirect('/coins/wallet')
 
         # if found, update value by adding to it
         else:
@@ -147,7 +173,7 @@ def coin_transaction():
             new_value = 0
             new_value = float(coin_select[0]) + value
             update_transaction(new_value, user_id, coin)
-            return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
+            return redirect('/coins/wallet')
 
     if transaction == "sell":
 
@@ -171,7 +197,9 @@ def coin_transaction():
                 history = f"Sold {value} {coin} at {current_price}"
                 insert_history(user_id, history)
                 update_transaction(new_value, user_id, coin)
-                return render_template("transactions.html", success=f"Transaction successfully added to wallet. Refresh for updated history", history=all_history)
+                return redirect('/coins/wallet')
+
+    return redirect('/')
 
 
 @ coins_controller.route('/coins/wallet', methods=['GET'])

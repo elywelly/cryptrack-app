@@ -217,12 +217,6 @@ button {
     color: rgb(255, 45, 45);
 }
 
-.success {
-    display: flex;
-    justify-content: center;
-    color: rgb(58, 232, 58);
-}
-
 .transactions > .coin-description {
     display: flex;
     justify-content: center;
@@ -265,5 +259,16 @@ button {
     margin: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
         sans-serif;
+    border-radius: 25px;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+}
+
+.delete > form > .button {
+    background-color: #040926;
+    color: #ffed66;
     border-radius: 25px;
 }

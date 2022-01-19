@@ -45,6 +45,11 @@
 
 <div class="transactions">
     <h2>Transaction History</h2>
+    <div class="delete">
+        <form action="/coins/transactions/history" method="post">
+            <input type="submit" id="delete" name="delete" value="Delete History" class="button" />
+        </form>
+    </div>
     {% for each_history in history %}
     <p class="history" style="color: grey"><b>{{ each_history[0] }}</b></p>
     <p class="history">{{ each_history[1] }}</p>
