@@ -3,7 +3,7 @@
 Got too many crypto and exchanges to keep track of?
 Create your own wallet to CrypTrack of all your Crypto values in one spot.
 
-Vist it [here](https://floating-thicket-31159.herokuapp.com/)
+Vist the App [here](https://cryptrack-app.herokuapp.com/)
 
 ## Tech Used
 
