@@ -36,6 +36,9 @@
                     <a href="/coins/transactions">Transactions</a>
                 </div>
                 <div>
+                    <a href="/users/account">Account</a>
+                </div>
+                <div>
                     <a href="/sessions/destroy">Logout</a>
                 </div>
                 {% else %}
@@ -67,7 +70,7 @@
             </div>
             {% if session.get('user_id') %}
             <div class="loggedin">
-                    <div>Logged in as <a href="/users/account"><span style="color: #ffed66; font-weight: bold">{{session.get('user_name')}}</span></a></div>
+                    <div>Logged in as <a href="/users/account"><span style="color: #ffed66; font-weight: bold;">{{session.get('user_name')}}</span></a></div>
             </div>
             </nav>
             {% endif %}

@@ -69,6 +69,7 @@ Vist the App [here](https://cryptrack-app.herokuapp.com/)
 -   JavaScript to warn user about deleting forever functions (history, account, wallet)
 -   Sign Up page to check if email already exists in db and inform user
 -   Login page to check if email exists and if password matches - inform user which is valid
+-   More account management - change name, email or password
 
 ## Credits
 

@@ -273,3 +273,15 @@ button,
     color: #ffed66;
     border-radius: 25px;
 }
+
+.update-button {
+    background-color: #ffed66;
+    color: rgb(13, 3, 46);
+    width: 5em;
+    height: 1.6em;
+    padding: 0px;
+    margin: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    border-radius: 25px;
+}

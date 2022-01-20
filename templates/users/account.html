@@ -1,8 +1,31 @@
 {% extends 'base.html' %} {% block content %}
 <div class="signup account">
+    <h2 style="color: #ffed66">My Account</h2>
+    <p style="color: rgb(79, 213, 79)">Update your account details.</p>
+    <p style="color: rgb(206, 8, 245)">{{ message }}</p>
+    <div id="search-section">
+        <form action="/users/account/name" method="POST">
+            <label for="name" style="font-weight: bold">Change Name: </label>
+            <input type="text" id="name" name="name" required/>
+            <input type="submit" id="submit" class="update-button" value="Update" />
+        </form>
+    </div>
+    <div id="search-section">
+        <form action="/users/account/email" method="POST">
+            <label for="email" style="font-weight: bold">Change Email: </label>
+            <input id="email" name="email" type="email" required />
+            <input type="submit" id="submit" class="update-button" value="Update" />
+        </form>
+    </div>
+    <div id="search-section">
+        <form action="/users/account/password" method="POST">
+            <label for="password" style="font-weight: bold">Change Password: </label>
+            <input id="password" name="password" type="password" required />
+            <input type="submit" id="submit" class="update-button" value="Update" />
+        </form>
+    </div>
     <form action="/users/account/delete" method="POST">
-        <h2>My Account</h2>
-        <p>Delete your account.</p>
+        <p style="color: rgb(250, 9, 9)">Delete your account.</p>
         <div class="delete">
             <input
                     type="submit"

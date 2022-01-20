@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session
 import bcrypt
-from models.user import insert_user, delete_user, get_user_by_email
+from models.user import insert_user, delete_user, get_user_by_email, user_update_name, user_update_email, user_update_password
 from models.transactions import delete_wallet, delete_history
 
 user_controller = Blueprint(
@@ -42,6 +42,58 @@ def my_account():
     if not session.get('user_id'):
         return redirect('/login')
     return render_template('account.html')
+
+
+@user_controller.route('/users/account/name', methods=["GET", "POST"])
+def update_name():
+    if not session.get('user_id'):
+        return redirect('/login')
+
+    id = int(session.get('user_id'))
+    new_value = request.form.get("name")
+
+    if new_value == None:
+        return redirect('/users/account')
+
+    user_update_name(new_value, id)
+
+    return render_template('account.html', message="Name Updated")
+
+
+@user_controller.route('/users/account/email', methods=["GET", "POST"])
+def update_email():
+    if not session.get('user_id'):
+        return redirect('/login')
+
+    id = int(session.get('user_id'))
+    new_value = request.form.get("email")
+
+    if new_value == None:
+        return redirect('/users/account')
+
+    user_update_email(new_value, id)
+
+    return render_template('account.html', message="Email Updated")
+
+
+@user_controller.route('/users/account/password', methods=["GET", "POST"])
+def update_password():
+    if not session.get('user_id'):
+        return redirect('/login')
+
+    id = int(session.get('user_id'))
+    password = request.form.get("password")
+    field = 'password'
+
+    if password == None:
+        return redirect('/users/account')
+
+    new_value = bcrypt.hashpw(
+        password.encode(), bcrypt.gensalt()).decode()
+
+    user_update_password(new_value, id)
+
+    return render_template('account.html', message="Password Updated")
 
 
 @user_controller.route('/users/account/delete', methods=["GET", "POST"])
