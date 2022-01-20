@@ -19,6 +19,9 @@ def login():
     # Check if user is in database
     user = get_user_by_email(email)
 
+    if user == None:
+        return render_template('signup.html', message="Email not found, Sign up now!")
+
     # get password
     password = request.form.get('password')
 
@@ -34,7 +37,7 @@ def login():
         return redirect('/')
     else:
         # if not, have user signup
-        return render_template('signup.html', message="Password or user not found. Sign up now!")
+        return render_template('login.html', message="Your password does not match. Please try again.")
 
 
 @session_controller.route('/sessions/destroy', methods=["GET", "POST"])

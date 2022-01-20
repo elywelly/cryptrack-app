@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session
 import bcrypt
-from models.user import insert_user, delete_user
+from models.user import insert_user, delete_user, get_user_by_email
 from models.transactions import delete_wallet, delete_history
 
 user_controller = Blueprint(
@@ -25,6 +25,11 @@ def create_user():
 
     if email == None or name == None or password == None:
         return redirect('/')
+
+    db_email = get_user_by_email(email)
+
+    if db_email != None:
+        return render_template('signup.html', message="Email is already in use. Please enter a new email.")
 
     hashed_password = bcrypt.hashpw(
         password.encode(), bcrypt.gensalt()).decode()

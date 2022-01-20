@@ -67,6 +67,8 @@ Vist the App [here](https://cryptrack-app.herokuapp.com/)
 -   Transactions Database to delete coins that have 0 value so it doesn't appear in wallet
 -   Users to be able to delete account
 -   JavaScript to warn user about deleting forever functions (history, account, wallet)
+-   Sign Up page to check if email already exists in db and inform user
+-   Login page to check if email exists and if password matches - inform user which is valid
 
 ## Credits
 
