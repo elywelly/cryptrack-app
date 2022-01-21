@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-    <h2 id="all-coins">{{ message }} 100 COINS</h2>
+    <h2 id="all-coins" style="color: #ffed66">
+        {{ message }} 100 COINS BY {{ sorting }}
+    </h2>
 </div>
 <div id="sort">
     <form action="/coins" method="Get">

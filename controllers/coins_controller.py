@@ -13,23 +13,28 @@ def coins():
     sort_type = "market_cap_"
     sort_by = "desc"
     message = "TOP"
+    sorting = "MARKET CAP"
     if sort != None:
         if sort == "MCASC":
             sort_type = "market_cap_"
             sort_by = "asc"
             message = "BOTTOM"
+            sorting = "MARKET CAP"
         elif sort == "MCDESC":
             sort_type = "market_cap_"
             sort_by = "desc"
             message = "TOP"
+            sorting = "MARKET CAP"
         elif sort == "PASC":
             sort_type = "price_"
             sort_by = "asc"
             message = "BOTTOM"
-        elif sort == "PADESC":
+            sorting = "PRICE"
+        elif sort == "PDESC":
             sort_type = "price_"
             sort_by = "desc"
             message = "TOP"
+            sorting = "PRICE"
 
     currency = request.values.get('currency')
     current_currency = "AUD"
@@ -45,7 +50,7 @@ def coins():
 
     json = coins.json()
 
-    return render_template('coins.html', coins=json, message=message, current_currency=current_currency)
+    return render_template('coins.html', coins=json, message=message, current_currency=current_currency, sorting=sorting)
 
 
 @coins_controller.route('/coins/search', methods=['GET', 'POST'])
