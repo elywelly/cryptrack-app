@@ -71,6 +71,14 @@ Vist the App [here](https://cryptrack-app.herokuapp.com/)
 -   Login page to check if email exists and if password matches - inform user which is valid
 -   More account management - change name, email or password
 
+## Future Features
+
+-   More ways to sort coins and display all coins in pages
+-   Currency to stay fixed to initial selection by user
+-   More currency options with symbol to match the currency
+-   Display profits and loss of when user bought the coin at a certain price and currently
+-   Drop down suggestions as user types in search bars
+
 ## Credits
 
 Coin API data from [CoinGecko](https://www.coingecko.com/en/api/documentation)
