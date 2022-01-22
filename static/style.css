@@ -238,7 +238,8 @@ button,
     margin: 0 auto;
 }
 
-#search-section {
+#search-section,
+#updates {
     display: flex;
     justify-content: center;
 }
@@ -285,8 +286,23 @@ button,
     width: 5em;
     height: 1.6em;
     padding: 0px;
-    margin: 10px;
+    margin: 0 auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
         sans-serif;
     border-radius: 25px;
+}
+
+.hidden {
+    display: none;
+    padding: 10px;
+}
+
+#updates {
+    margin: 15px;
+}
+
+#to-update-name,
+#to-update-email,
+#to-update-password {
+    cursor: grabbing;
 }

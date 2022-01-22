@@ -3,25 +3,31 @@
     <h2 style="color: #ffed66">My Account</h2>
     <p style="color: rgb(79, 213, 79)">Update your account details.</p>
     <p style="color: rgb(206, 8, 245)">{{ message }}</p>
-    <div id="search-section">
+    <div id="updates">
         <form action="/users/account/name" method="POST">
-            <label for="name" style="font-weight: bold">Change Name: </label>
-            <input type="text" id="name" name="name" required/>
-            <input type="submit" id="submit" class="update-button" value="Update" />
+            <label for="name" style="font-weight: bold" id="to-update-name">Update Name </label>
+            <div class ="hidden" id="update-name">
+                <input type="text" id="name" name="name" required />
+                <input type="submit" id="submit" class="update-button" value="Update" />
+            </div>
         </form>
     </div>
-    <div id="search-section">
+    <div id="updates">
         <form action="/users/account/email" method="POST">
-            <label for="email" style="font-weight: bold">Change Email: </label>
-            <input id="email" name="email" type="email" required />
-            <input type="submit" id="submit" class="update-button" value="Update" />
+            <label for="email" style="font-weight: bold" id="to-update-email">Update Email </label>
+            <div class="hidden" id="update-email">
+                <input id="email" name="email" type="email" required />
+                <input type="submit" id="submit" class="update-button" value="Update" />
+            </div>
         </form>
     </div>
-    <div id="search-section">
+    <div id="updates">
         <form action="/users/account/password" method="POST">
-            <label for="password" style="font-weight: bold">Change Password: </label>
-            <input id="password" name="password" type="password" required />
-            <input type="submit" id="submit" class="update-button" value="Update" />
+            <label for="password" style="font-weight: bold" id="to-update-password">Update Password </label>
+            <div class="hidden" id="update-password">
+                <input id="password" name="password" type="password" required />
+                <input type="submit" id="submit" class="update-button" value="Update" />
+            </div>
         </form>
     </div>
     <form action="/users/account/delete" method="POST">
