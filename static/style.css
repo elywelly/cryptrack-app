@@ -75,7 +75,7 @@ img {
 
 .coin-description {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-columns: 50px 100px 80px 50px 50px 50px 50px;
     grid-template-rows: auto;
     grid-template-areas:
         'name symbol price hour day week cap'
@@ -94,26 +94,31 @@ img {
     grid-area: symbol;
     align-self: center;
     font-weight: bold;
+    text-align: center;
 }
 
 .desc-price {
     grid-area: price;
     align-self: center;
+    text-align: center;
 }
 
 .desc-hour {
     grid-area: hour;
     align-self: center;
+    text-align: center;
 }
 
 .desc-day {
     grid-area: day;
     align-self: center;
+    text-align: center;
 }
 
 .desc-week {
     grid-area: week;
     align-self: center;
+    text-align: center;
 }
 
 .desc-cap {
