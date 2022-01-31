@@ -100,7 +100,7 @@ def update_password():
     return render_template('account.html', message="Password Updated")
 
 
-@user_controller.route('/users/account/delete', methods=["GET", "POST"])
+@user_controller.route('/users/account/delete', methods=["POST"])
 def delete_account():
     if not session.get('user_id'):
         return redirect('/login')

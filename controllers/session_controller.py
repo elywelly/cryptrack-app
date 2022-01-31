@@ -40,7 +40,7 @@ def login():
         return render_template('login.html', message="Your password does not match. Please try again.")
 
 
-@session_controller.route('/sessions/destroy', methods=["GET", "POST"])
+@session_controller.route('/sessions/destroy', methods=["POST"])
 def logout():
     session.clear()
     return redirect('/')
