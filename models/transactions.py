@@ -1,7 +1,7 @@
 import database
 
 
-def select_all_transaction(user_id):
+def select_all_transactions_by_userid(user_id):
     results = database.sql_select(
         "SELECT value, coin FROM transactions WHERE user_id = %s", [user_id])
     if len(results) > 0:

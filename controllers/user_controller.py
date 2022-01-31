@@ -29,12 +29,16 @@ def create_user():
     db_email = get_user_by_email(email)
 
     if db_email != None:
-        return render_template('signup.html', message="Email is already in use. Please enter a new email.")
+        return render_template('signup.html', message="Email error. Please try again.")
 
     hashed_password = bcrypt.hashpw(
         password.encode(), bcrypt.gensalt()).decode()
     insert_user(email, name, hashed_password)
-    return redirect('/login')
+    user = get_user_by_email(email)
+    session['user_id'] = user['id']
+    # to display username login as
+    session['user_name'] = user['name']
+    return redirect('/')
 
 
 @user_controller.route('/users/account')
@@ -57,7 +61,7 @@ def update_name():
 
     user_update_name(new_value, id)
 
-    return render_template('account.html', message="Name Updated")
+    return render_template('account.html', message="Name Updated. Login again to view name change.")
 
 
 @user_controller.route('/users/account/email', methods=["GET", "POST"])
@@ -96,7 +100,7 @@ def update_password():
     return render_template('account.html', message="Password Updated")
 
 
-@user_controller.route('/users/account/delete', methods=["GET", "POST"])
+@user_controller.route('/users/account/delete', methods=["POST"])
 def delete_account():
     if not session.get('user_id'):
         return redirect('/login')

@@ -8,7 +8,6 @@ from controllers.session_controller import session_controller
 app = Flask(__name__)
 SECRET_KEY = os.environ.get("SECRET_KEY", "SECRET")
 app.config['SECRET_KEY'] = SECRET_KEY
-# DB_URL = os.environ.get("DATABASE_URL", "dbname=project-2-cryptrack")
 
 
 @app.route('/')

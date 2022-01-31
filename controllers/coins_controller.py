@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, redirect, render_template
 import requests
-from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transaction, delete_history, delete_wallet
+from models.transactions import select_transaction, insert_transaction, insert_history, update_transaction, select_history, select_all_transactions_by_userid, delete_history, delete_wallet
 
 coins_controller = Blueprint(
     "coins_controller", __name__, template_folder="../templates/coins")
@@ -242,7 +242,7 @@ def wallet():
         current_currency = currency.upper()
 
     user_id = session.get('user_id')
-    coins_held = select_all_transaction(user_id)
+    coins_held = select_all_transactions_by_userid(user_id)
 
     # User total wallet value in fiat
     amount = 0

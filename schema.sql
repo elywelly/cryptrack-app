@@ -1,13 +1,17 @@
 -- Users
-CREATE TABLE users(id SERIAL PRIMARY KEY, email text NOT NULL, name text NOT NULL, password text NOT NULL);
-ALTER TABLE users ADD CONSTRAINT email_unique UNIQUE(email);
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY, 
+  email text NOT NULL unique, 
+  name VARCHAR(255) NOT NULL, 
+  password VARCHAR(64) NOT NULL
+  );
 
 -- Transactions
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     user_id INTEGER,
-    coin TEXT,
+    coin VARCHAR(10),
     value NUMERIC,
     CONSTRAINT fk_user
       FOREIGN KEY(user_id)
