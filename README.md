@@ -15,6 +15,17 @@ Vist the App [here](https://cryptrack-app.herokuapp.com/)
 -   PostgreSQL
 -   Heroku
 
+## Set-Up
+```
+git clone <repo_name>
+python3 -m venv venv
+source /venv/bin/activate
+pip3 install -r requiremetns.txt
+
+createdb <db_name>
+psql <db_name> < schema.sql
+```
+
 ## Planning
 
 ### What information do I need?
