@@ -20,7 +20,7 @@ Vist the App [here](https://cryptrack-app.herokuapp.com/)
 git clone <repo_name>
 python3 -m venv venv
 source /venv/bin/activate
-pip3 install -r requiremetns.txt
+pip3 install -r requirements.txt
 
 createdb <db_name>
 psql <db_name> < schema.sql
